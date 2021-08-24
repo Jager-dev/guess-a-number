@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {bindReporter} from "web-vitals/dist/modules/lib/bindReporter";
 
 const GuessNum = () => {
   const [number, setNumber] = useState(Math.round(Math.random() * 10))
@@ -35,27 +36,22 @@ const GuessNum = () => {
   }
 
   return (
-    <div>
-      <h1>Угадай число с 3-х попыток</h1>
-      <form>
-        <label htmlFor="number">Введите число </label>
-        <input type="number" value={guessNumber} id={"number"} onChange={changeInput}/>
-      </form>
-      <div>
-        <button onClick={check} disabled={!guessNumber}>Chek</button>
-        <button onClick={newGame}>Restart</button>
-        {
-          message.length === 0 &&
-          <div>
-            <p>У вас осталось {attempt} {attempt === 1 ? 'попытка' : 'попытки'}</p>
-          </div>
-        }
-        <div>
-          <h2>{message}</h2>
-          <h3>Ваш счет: {score}</h3>
-        </div>
-      </div>
+<div className="row my-5">
+  <div className={"col-6 offset-3"}>
+    <h1>Угадай число с 3-х попыток</h1>
+    <div className={"d-flex"}>
+      <input type="number" value={guessNumber} id={"number"} onChange={changeInput} className={"form-control"} placeholder={""}/>
+      <button onClick={check} disabled={!guessNumber} className={"btn btn-success ms-2"}>Chek</button>
+      <button onClick={newGame} className={"btn btn-warning ms-2"}>Restart</button>
     </div>
+      {
+        message.length === 0 &&
+          <h3>У вас осталось {attempt} {attempt === 1 ? 'попытка' : 'попытки'}</h3>
+      }
+        <h2>{message}</h2>
+        <h3>Ваш счет: {score}</h3>
+  </div>
+</div>
   );
 };
 
