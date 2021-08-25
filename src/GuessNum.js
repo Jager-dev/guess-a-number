@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {bindReporter} from "web-vitals/dist/modules/lib/bindReporter";
 
 const GuessNum = () => {
   const [number, setNumber] = useState(Math.round(Math.random() * 10))
